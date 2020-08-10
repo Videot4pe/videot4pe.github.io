@@ -1,3 +1,73 @@
-<div>
-	Hello world1
+<script src="parseTrigramsStat.js"></script>
+<script src="parseTrigramsClasses.js"></script>
+
+<script type="text/javascript">
+	function openFile(event) {
+		let reader = new FileReader();
+		reader.onload = function(){
+				if(document.getElementById('trigrams').checked)
+					parseTrigrams(reader.result);
+				if(document.getElementById('classes').checked)
+					parseClasses(reader.result);
+			};
+		reader.readAsText(event.target.files[0]);
+	}
+
+	function checkboxHandler(event) {
+		console.log(event, event.target.name, event.target.value);
+	}
+
+</script>
+
+<style>
+	body {
+		background: pink;
+	}
+
+	.main-container {
+		display: flex;
+		margin: 10%;
+		padding: 25px;
+		font-size: 20px;
+		border: 1px solid black;
+		border-radius: 25%;
+		color: blue;
+	}
+
+	.input {
+		margin: 0;
+		font-size: 20px;
+		text-align: center;
+	}
+
+</style>
+
+<div class='main-container'>
+	<input 
+		class="input"
+		type="file"
+		name="file"
+		accept="txt"
+		placeholder="IDIOT - TOP ROMAN"
+		onchange="openFile(event)"
+	>
+	<form class="input"> 
+        Придется что-то выбрать (можно даже все сразу)
+        <br> 
+        <input 
+        	type="checkbox"
+        	id="trigrams"
+            name="trigrams" 
+            value="yes"
+            checked
+		> Триграммы 
+        <br> 
+        <input 
+        	type="checkbox"
+        	id="classes"
+            name="classes" 
+            value="no"
+		> Классы 
+        <br> 
+    </form> 
 </div>
